@@ -37,7 +37,7 @@ jobs:
       - name: Install clang
         run: |
           yum install -y centos-release-scl-rh
-          yum install -y clang llvm-toolset-7.0-clang
+          yum install -y llvm-toolset-7.0-clang
           echo /opt/rh/llvm-toolset-7.0/root/usr/lib >> /etc/ld.so.conf
           echo /opt/rh/llvm-toolset-7.0/root/usr/lib64 >> /etc/ld.so.conf
           rm /etc/ld.so.cache
@@ -51,7 +51,7 @@ jobs:
       - name: Download Dependencies
         run: ./scripts/download-dependency.sh
       - name: Build project
-        run: cargo build --release
+        run: cargo build # --release
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
