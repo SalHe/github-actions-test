@@ -43,7 +43,9 @@ jobs:
           yum install -y llvm-toolset-7.0-clang
           echo /opt/rh/llvm-toolset-7.0/root/usr/lib >> /etc/ld.so.conf
           echo /opt/rh/llvm-toolset-7.0/root/usr/lib64 >> /etc/ld.so.conf
+          ldconfig -p
           rm /etc/ld.so.cache
+          ldconfig
           ldconfig -p
       - name: find
         run: find / -name "libclang.so*"
