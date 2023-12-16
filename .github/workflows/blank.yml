@@ -41,7 +41,7 @@ jobs:
           echo /opt/rh/llvm-toolset-7.0/root/usr/lib >> /etc/ld.so.conf
           echo /opt/rh/llvm-toolset-7.0/root/usr/lib64 >> /etc/ld.so.conf
           echo LD_LIBRARY_PATH=/opt/rh/llvm-toolset-7.0/root/usr/lib64:$LD_LIBRARY_PATH >> $GITHUB_ENV
-          echo CPLUS_INCLUDE_PATH=/opt/rh/llvm-toolset-7.0/root/usr/lib64/clang/7.0.1/include/ >> $GITHUB_ENV
+          echo LLVM_INCLUDE=/opt/rh/llvm-toolset-7.0/root/usr/lib64/clang/7.0.1/include/ >> $GITHUB_ENV
       - name: find
         run: yum install -y tree && tree /opt/rh/llvm-toolset-7.0
       - name: Install Rust
