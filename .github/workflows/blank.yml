@@ -40,8 +40,6 @@ jobs:
           yum install -y llvm-toolset-7.0-clang
           echo /opt/rh/llvm-toolset-7.0/root/usr/lib >> /etc/ld.so.conf
           echo /opt/rh/llvm-toolset-7.0/root/usr/lib64 >> /etc/ld.so.conf
-          rm /etc/ld.so.cache
-          ldconfig
       - name: Install Rust
         uses: actions-rs/toolchain@v1
         with:
@@ -51,7 +49,10 @@ jobs:
       - name: Download Dependencies
         run: ./scripts/download-dependency.sh
       - name: Build project
-        run: cargo build # --release
+        run: |
+          rm /etc/ld.so.cache
+          ldconfig
+          cargo build # --release
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
