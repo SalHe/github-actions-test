@@ -38,8 +38,8 @@ jobs:
         run: |
           yum install -y centos-release-scl-rh
           yum install -y llvm-toolset-7.0-clang
-          echo /opt/rh/llvm-toolset-7/root/usr/lib >> /etc/ld.so.conf.d/llvm-toolset-7.0-clang.conf
-          echo /opt/rh/llvm-toolset-7/root/usr/lib64 >> /etc/ld.so.conf.d/llvm-toolset-7.0-clang.conf
+          echo /opt/rh/llvm-toolset-7.0/root/usr/lib >> /etc/ld.so.conf.d/llvm-toolset-7.0-clang.conf
+          echo /opt/rh/llvm-toolset-7.0/root/usr/lib64/ >> /etc/ld.so.conf.d/llvm-toolset-7.0-clang.conf
           ldconfig
       - name: find
         run: find / -name "libclang.so*"
