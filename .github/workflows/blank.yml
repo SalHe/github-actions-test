@@ -41,6 +41,8 @@ jobs:
           echo /opt/rh/llvm-toolset-7.0/root/usr/lib >> /etc/ld.so.conf
           echo /opt/rh/llvm-toolset-7.0/root/usr/lib64 >> /etc/ld.so.conf
           echo LD_LIBRARY_PATH=/opt/rh/llvm-toolset-7.0/root/usr/lib64:$LD_LIBRARY_PATH >> $GITHUB_ENV
+      - name: find
+        run: find / -name "stderr.h"
       - name: Install Rust
         uses: actions-rs/toolchain@v1
         with:
