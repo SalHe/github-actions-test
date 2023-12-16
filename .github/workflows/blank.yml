@@ -32,6 +32,8 @@ jobs:
       #   uses: docker://centos:7.6.1810
       - name: glibc
         run: ls && ldconfig -v | grep libc.so && ldd --version
+      - name: gcc
+        uses: JohelEGP/gcc-snapshot@v1.0.0
       - name: Install Rust
         uses: actions-rs/toolchain@v1
         with:
