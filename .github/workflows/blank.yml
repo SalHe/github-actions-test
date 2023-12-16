@@ -32,6 +32,8 @@ jobs:
       #   uses: docker://centos:7.6.1810
       - name: glibc
         run: ls && ldconfig -v | grep libc.so && ldd --version
+      - name: Install wget
+        run: sudo yum install -y wget
       - name: gcc
         uses: JohelEGP/gcc-snapshot@v1.0.0
       - name: Install Rust
@@ -41,7 +43,7 @@ jobs:
           toolchain: stable
           override: true
       - name: Download Dependencies
-        run: mkdir yas-client && cd yas-client && curl "https://linked.yashandb.com/resource/yashandb-client-23.1.1.100-linux-$(uname -m).tar.gz" -o yas-client.tar.gz && tar zxf yas-client.tar.gz && cd ..
+        run: ./scripts/download-dependency.sh
       - name: Build project
         run: |
           cargo build --release
