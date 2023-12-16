@@ -33,7 +33,14 @@ jobs:
       - name: glibc
         run: ls && ldconfig -v | grep libc.so && ldd --version
       - name: Install wget
-        run:  yum install -y centos-release-scl-rh && yum install -y wget gcc g++ llvm-toolset-7.0-clang
+        run: yum install -y wget gcc g++
+      - name: Install clang
+        run: |
+          yum install -y centos-release-scl-rh
+          yum install -y llvm-toolset-7.0-clang
+          echo /opt/rh/llvm-toolset-7/root/usr/lib >> /etc/ld.so.conf.d/llvm-toolset-7.0-clang.conf
+          echo /opt/rh/llvm-toolset-7/root/usr/lib64 >> /etc/ld.so.conf.d/llvm-toolset-7.0-clang.conf
+          ldconfig
       - name: Install Rust
         uses: actions-rs/toolchain@v1
         with:
