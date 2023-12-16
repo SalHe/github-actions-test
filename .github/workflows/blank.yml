@@ -23,6 +23,7 @@ jobs:
       image: centos:centos7
     env:
       LIBCLANG_PATH: /opt/rh/llvm-toolset-7.0/root/usr/lib64
+      LD_LIBRARY_PATH: /opt/rh/llvm-toolset-7.0/root/usr/lib64
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
