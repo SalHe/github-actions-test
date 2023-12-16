@@ -33,9 +33,7 @@ jobs:
       - name: glibc
         run: ls && ldconfig -v | grep libc.so && ldd --version
       - name: Install wget
-        run: yum install -y wget gcc g++
-      - name: Install Clang
-        uses: egor-tensin/setup-clang@v1
+        run: yum install -y wget gcc g++ clang clang++
       - name: Install Rust
         uses: actions-rs/toolchain@v1
         with:
