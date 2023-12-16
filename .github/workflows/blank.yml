@@ -52,6 +52,7 @@ jobs:
         run: |
           rm /etc/ld.so.cache
           ldconfig
+          ldconfig -p
           cargo build # --release
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
