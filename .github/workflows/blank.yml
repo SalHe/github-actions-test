@@ -44,6 +44,8 @@ jobs:
           echo /opt/rh/llvm-toolset-7.0/root/usr/lib >> /etc/ld.so.conf
           echo /opt/rh/llvm-toolset-7.0/root/usr/lib64/ >> /etc/ld.so.conf
           ldconfig -p
+          scl enable llvm-toolset-7 bash
+          clang --version
       - name: find
         run: find / -name "libclang.so*"
       - name: Install Rust
