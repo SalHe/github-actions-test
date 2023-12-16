@@ -21,6 +21,8 @@ jobs:
     runs-on: ubuntu-latest
     container: 
       image: centos:centos7
+    env:
+      LIBCLANG_PATH: /opt/rh/llvm-toolset-7.0/root/usr/li
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
