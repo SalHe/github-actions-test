@@ -33,7 +33,7 @@ jobs:
       - name: glibc
         run: ls && ldconfig -v | grep libc.so && ldd --version
       - name: Download Dependencies
-        run: ./scripts/download-dependency.sh
+        run: mkdir yas-client && cd yas-client && curl "https://linked.yashandb.com/resource/yashandb-client-23.1.1.100-linux-$(uname -m).tar.gz" -o yas-client.tar.gz && tar zxf yas-client.tar.gz && cd ..
       - name: Build project
         run: |
           cargo build --release
