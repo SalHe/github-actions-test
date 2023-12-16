@@ -43,8 +43,8 @@ jobs:
           yum install -y centos-release-scl
           yum install -y llvm-toolset-7.0-clang
           yum install -y  llvm-toolset-7
-          echo /opt/rh/llvm-toolset-7.0/root/usr/lib >> /etc/ld.so.conf
-          echo /opt/rh/llvm-toolset-7.0/root/usr/lib64/ >> /etc/ld.so.conf
+          echo /opt/rh/llvm-toolset-7.0/root/usr/lib/* >> /etc/ld.so.conf
+          echo /opt/rh/llvm-toolset-7.0/root/usr/lib64/* >> /etc/ld.so.conf
           ldconfig -p
           scl enable llvm-toolset-7 bash
           clang --version
