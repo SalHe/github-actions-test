@@ -33,7 +33,7 @@ jobs:
       - name: glibc
         run: ls && ldconfig -v | grep libc.so && ldd --version
       - name: Install wget
-        run:  yum install -y wget  && yum install epel-release && yum install -y wget gcc g++ clang clang++ && clang --version
+        run:  yum install -y wget  && yum install -y epel-release && yum install -y wget gcc g++ clang clang++ && clang --version
       - name: Install Rust
         uses: actions-rs/toolchain@v1
         with:
