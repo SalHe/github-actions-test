@@ -34,6 +34,8 @@ jobs:
         run: ls && ldconfig -v | grep libc.so && ldd --version
       - name: Install wget
         run:  yum install -y centos-release-scl && yum install -y wget gcc g + clang clang++ llvm-toolset-7.0-clang.x86_64  llvm-toolset-7.0-llvm-libs.x86_64
+      - name: clang
+        uses: actions4cpp/setup-llvm@main
       - name: Install Rust
         uses: actions-rs/toolchain@v1
         with:
