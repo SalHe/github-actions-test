@@ -34,6 +34,10 @@ jobs:
         run: ls && ldconfig -v | grep libc.so && ldd --version
       - name: Install Rust
         uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
       - name: Download Dependencies
         run: mkdir yas-client && cd yas-client && curl "https://linked.yashandb.com/resource/yashandb-client-23.1.1.100-linux-$(uname -m).tar.gz" -o yas-client.tar.gz && tar zxf yas-client.tar.gz && cd ..
       - name: Build project
