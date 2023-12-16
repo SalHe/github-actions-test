@@ -33,9 +33,7 @@ jobs:
       - name: glibc
         run: ls && ldconfig -v | grep libc.so && ldd --version
       - name: Install wget
-        run: yum install -y wget
-      - name: gcc
-        uses: JohelEGP/gcc-snapshot@v1.0.0
+        run: yum install -y wget gcc g++
       - name: Install Rust
         uses: actions-rs/toolchain@v1
         with:
