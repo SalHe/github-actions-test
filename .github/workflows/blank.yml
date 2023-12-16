@@ -20,7 +20,7 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     container: 
-      image: centos:centos7.9.2009
+      image: ubuntu:16.10
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -33,7 +33,7 @@ jobs:
       - name: glibc
         run: ls && ldconfig -v | grep libc.so && ldd --version
       - name: Install wget
-        run:  yum install -y wget  && yum install -y epel-release && yum install -y wget gcc g++ llvm-toolset-11.0-clang-tools-extra llvm-toolset-11.0-clang
+        run:  apt install -y wget  && apt install -y epel-release && apt install -y wget gcc g++ clang clang++
       - name: Install Rust
         uses: actions-rs/toolchain@v1
         with:
