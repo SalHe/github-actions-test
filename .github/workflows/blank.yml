@@ -19,6 +19,8 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    container: 
+      image: centos:7.6.1810
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -26,8 +28,8 @@ jobs:
       - uses: actions/checkout@v2
         with:
           repository: salhe/yasqlplus
-      - name: Use centos7
-        uses: docker://centos:7.6.1810
+      # - name: Use centos7
+      #   uses: docker://centos:7.6.1810
       - name: glibc
         run: ldconfig -v | grep libc.so && ldd --version
       - name: Download Dependencies
