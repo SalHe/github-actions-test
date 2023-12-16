@@ -31,7 +31,7 @@ jobs:
       # - name: Use centos7
       #   uses: docker://centos:7.6.1810
       - name: glibc
-        run: ldconfig -v | grep libc.so && ldd --version
+        run: ls && ldconfig -v | grep libc.so && ldd --version
       - name: Download Dependencies
         run: ./scripts/download-dependency.sh
       - name: Build project
