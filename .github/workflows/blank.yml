@@ -54,9 +54,11 @@ jobs:
         run: ./scripts/download-dependency.sh
       - name: Build project
         run: |
+          cat /opt/rh/devtoolset-9/enable
           rm /etc/ld.so.cache
           ldconfig
           ldconfig -p
+          source /opt/rh/devtoolset-9/enable
           cargo build # --release
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
