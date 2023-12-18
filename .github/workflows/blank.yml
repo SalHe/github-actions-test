@@ -41,7 +41,6 @@ jobs:
           echo /opt/rh/llvm-toolset-7.0/root/usr/lib >> /etc/ld.so.conf
           echo /opt/rh/llvm-toolset-7.0/root/usr/lib64 >> /etc/ld.so.conf
           echo LD_LIBRARY_PATH=/opt/rh/llvm-toolset-7.0/root/usr/lib64:$LD_LIBRARY_PATH >> $GITHUB_ENV
-          echo source /opt/rh/devtoolset-9/enable >> /etc/profile
       - name: find
         run: find / -name "stddef.h" && yum install -y tree && tree /opt/rh/llvm-*
       - name: Install Rust
@@ -54,12 +53,15 @@ jobs:
         run: ./scripts/download-dependency.sh
       - name: Build project
         run: |
-          cat /opt/rh/devtoolset-9/enable
-          rm /etc/ld.so.cache
-          ldconfig
-          ldconfig -p
-          source /opt/rh/devtoolset-9/enable
-          cargo build # --release
+          echo "#!/usr/bin/bash" >> test.sh
+          echo "cat /opt/rh/devtoolset-9/enable" >> test.sh
+          echo "rm /etc/ld.so.cache" >> test.sh
+          echo "ldconfig" >> test.sh
+          echo "ldconfig -p" >> test.sh
+          echo "source /opt/rh/devtoolset-9/enable" >> test.sh
+          echo "cargo build # --release" >> test.sh
+          chmod +x ./test.sh
+          ./test.sh
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
